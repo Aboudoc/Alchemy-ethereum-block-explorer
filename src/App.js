@@ -25,6 +25,7 @@ function App() {
   const [stateRoot, setStateRoot] = useState();
   const [nonce, setNonce] = useState();
   const [timestamp, setTimestamp] = useState();
+  const [transactions, setTransactions] = useState();
 
   useEffect(() => {
     async function getBlockNumber() {
@@ -69,10 +70,19 @@ function App() {
     getTimeStamp();
   });
 
+  useEffect(() => {
+    async function getTransactions() {
+      setTransactions((await alchemy.core.getBlock()).transactions.length);
+    }
+    getTransactions();
+  });
+
   return (
     <div>
-      <div className="App">Block Number: {blockNumber}</div>
-      <div className="App">Timestamp: {timestamp}</div>
+      <div className="App">🔢 Block Number: {blockNumber}</div>
+      <div className="App">⏱️ Timestamp: {timestamp}</div>
+      <div className="App"> Transactions: {transactions}</div>
+      <div className="App">Size: {timestamp}</div>
       <div className="App">Hash: {blockHash}</div>
       <div className="App">Parent Hash: {parentHash}</div>
       <div className="App">State Root: {stateRoot}</div>
