@@ -1,8 +1,10 @@
+import Button from "./Button";
+
 const Header = () => {
   return (
     <header className="header">
       <h1>Block Explorer</h1>
-      <button className="btn">Search</button>
+      <Button color="green" text="Block Explorer" onClick />
     </header>
   );
 };
