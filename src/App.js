@@ -1,5 +1,6 @@
 import { Alchemy, Network } from "alchemy-sdk";
 import { useEffect, useState } from "react";
+import Header from "./components/Header";
 
 import "./App.css";
 
@@ -78,7 +79,8 @@ function App() {
   });
 
   return (
-    <div>
+    <div className="container">
+      <Header />
       <div className="App">🔢 Block Number: {blockNumber}</div>
       <div className="App">⏱️ Timestamp: {timestamp}</div>
       <div className="App"> Transactions: {transactions}</div>
