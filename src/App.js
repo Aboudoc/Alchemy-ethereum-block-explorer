@@ -14,11 +14,21 @@ const settings = {
 const alchemy = new Alchemy(settings);
 
 function App() {
+  const [transactions, setTransactions] = useState();
+
+  useEffect(() => {
+    async function getTransactions() {
+      setTransactions(
+        (await alchemy.core.getBlockWithTransactions()).transactions
+      );
+    }
+    getTransactions();
+  });
   return (
     <div className="container">
       <Header />
       <Block />
-      <Transactions />
+      {/* <Transactions transactions={transactions} /> */}
     </div>
   );
 }
